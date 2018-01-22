@@ -8,9 +8,7 @@
 // Here we are building the URL we need to query the database
 //var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=zwSkp5SkYy6QBQvKg4O7XjohB61VtJfY&q=" + search + "&limit=25&offset=0&rating=G&lang=en";
 
-
-
-var characters = ["Dr.Doom" , "Thanos" , "Spider-man" , "Cyclops" , "Wolverine" , "Deadpool"]
+var characters = ["Thor" , "Thanos" , "Spider-man" , "Captain America" , "Wolverine" , "Deadpool"]
 
 renderbuttons()
 
@@ -49,7 +47,7 @@ $("#add-char").on("click", function(event){
 
 
 
-$(".character").on("click", function(){
+function gifgenerate() {
 
 	var APIchar = $(this).attr("data-name");
 
@@ -61,6 +59,8 @@ $(".character").on("click", function(){
       method: "GET"
     })
 
+ 
+
   .then(function(response){
 
   	var results = response.data;
@@ -69,7 +69,8 @@ $(".character").on("click", function(){
 
   		var gifDiv = $("<div>");
 
-  		var charImage = $("<img>");
+  		var charImage = $("<img class='gif'>");
+
 
   		charImage.attr("src", results[i].images.fixed_height.url);
 
@@ -79,4 +80,7 @@ $(".character").on("click", function(){
   	}
   })
 
-})
+}
+
+$(document).on("click", ".character", gifgenerate)
+

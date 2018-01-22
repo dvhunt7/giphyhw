@@ -1,0 +1,10 @@
+body{
+	margin: 0 auto;
+	width: 80%;
+	background-color: green;
+}
+
+.character{
+	padding: 10px;
+	margin: 15px;
+}
